@@ -1,28 +1,30 @@
 import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
-    .container{
-    margin: 0 auto;
-    width: 100%; /* - será sempre 100% desde que não fique maior que 1100*/
-    max-width: 1400px;
-    padding: 1rem;
+    *{
+        margin: 0;
+        padding: 0;
+        border: 0;
+        font-size: 100%;
+        vertical-align: baseline;
+        box-sizing: border-box;
+   }
+   button{
+        cursor:pointer;
+   } 
+    body{
+        font-family: 'Inter', sans-serif; 
     }
+    :root{
+        --Color-primary: #FF577F;
+        --Color-primary-Focus: #FF427F;
+        --Color-primary-Negative: #59323F;
+        --Grey-4: #121214;
+        --Grey-3: #212529;
+        --Grey-2: #343B41;
+        --Grey-1: #868E96;
+        --Grey-0: #FFFFFF;
+    }
+   
 
-    .header{
-        width: 100%;
-        background: #F5F5F5;
-    }
-    .divContent{
-        display: flex;
-        flex-direction: column;
-        gap: 2.188rem;
-    }
-
-    @media (min-width:900px) {
-        .divContent{
-            display: flex;
-            gap: 2.188rem;
-            flex-direction: row;
-        }
-    }
 `
