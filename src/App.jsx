@@ -16,6 +16,7 @@ function App() {
       const response = await api.post("/sessions", formData);
 
       localStorage.setItem("@TOKEN", (JSON.stringify(response.data.token)))
+      localStorage.setItem("@USERID", (JSON.stringify(response.data.user.id)))
       setUserLogged(response.data.user)
       navigate("/dashboard")
       console.log(response.data)
@@ -30,6 +31,7 @@ function App() {
 
   const userLogout = () => {
     localStorage.removeItem("@TOKEN")
+    localStorage.removeItem("@USERID")
     setUserLogged(null)
     navigate("/")
   }

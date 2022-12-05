@@ -14,6 +14,7 @@ export const FormLogin = ({userLogin}) => {
   })
 
   const submit = (data)=>{
+    console.log(data)
     userLogin(data, setLoading)
   }
 

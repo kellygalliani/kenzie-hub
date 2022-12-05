@@ -1,7 +1,8 @@
-import { yupResolver } from '@hookform/resolvers/yup'
+
 import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useNavigate } from 'react-router-dom'
 import { api } from '../../services/api'
 import { InputBox } from '../Form/Input'
@@ -12,43 +13,49 @@ import { StyledForm } from './styles'
 export const FormRegister = () => {
     const [loading, setLoading] = useState(false)
     const navigate = useNavigate();
-    const { register, handleSubmit, formState: {errors}, reset } = useForm({
+    const { register, handleSubmit ,  formState: { errors }/*, reset */ } = useForm({
        mode: "onChange",
        resolver: yupResolver(RegisterSchema) 
-    })
-
-    const apiRegister = async (formData) =>{
+    }  )
+   /*  const submit = (formData) => {
+        /* apiRegister(formData)  
+        
+    } */
+    
+   const apiRegister = async (formData) =>{
+    const data = {
+        email: formData.email,
+        password: formData.password,
+        name: formData.name,
+        bio: formData.bio,
+        contact: formData.contact,
+        course_module: formData.course_module,
+    }
+    console.log(data)
         try {
             setLoading(true)
-            await api.post("/users", formData)
+            const response = await  api.post("/users", data)
             navigate("/")
+            console.log(response)
         } catch (error) {
-            if(error.reponse.data.message === "Email already exists"){
-
-            }
-        }
-    } 
-    const submit = async (formData) => {
-        delete formData.confirmPassword
-        
-        console.log(formData)
-        reset({
-            password: "",
-            confirmPassword: ""
-        })
-    }
+            console.log(error)
+        } finally{
+            setLoading(false)
+        } 
+    }  
+    
   return (
-    <StyledForm onSubmit={handleSubmit(submit)} noValidate>
+    <StyledForm onSubmit={handleSubmit(apiRegister)} >
         <h2>Crie sua conta</h2>
         <p>Rápido e grátis, vamos nessa!</p>
         <InputBox
             label={"Nome"}
             type={"text"}
-            id={"text"}
+            id={"name"}
             placeholder={"Digite aqui seu nome"}
             register={register("name")}
         />
-        {errors.name && <span>{errors.name.message}</span>}
+        {errors.name && <span>{errors.name.message}</span>} 
         <InputBox
             label={"Email"}
             type={"email"}
@@ -56,7 +63,8 @@ export const FormRegister = () => {
             placeholder={"Digite aqui seu email"}
             register={register("email")}
         />
-        {errors.email && <span>{errors.email.message}</span>}
+        
+        {errors.email && <span>{errors.email.message}</span>} 
         <InputBox
             label={"Senha"}
             type={"password"}
@@ -64,7 +72,7 @@ export const FormRegister = () => {
             placeholder={"Crie uma senha"}
             register={register("password")}
         />
-        {errors.password && <span>{errors.password.message}</span>}
+       {errors.password && <span>{errors.password.message}</span>} 
         <InputBox
             label={"Confirme a sua senha"}
             type={"password"}
@@ -80,7 +88,7 @@ export const FormRegister = () => {
             placeholder={"Fale sobre você"}
             register={register("bio")}
         />
-        {errors.textBio && <span>{errors.textBio.message}</span>}
+        {errors.bio && <span>{errors.bio.message}</span>} 
         <InputBox
             label={"Contato"}
             type={"tel"}
@@ -93,7 +101,7 @@ export const FormRegister = () => {
             label={"Selecionar módulo"}
             type={"select"}
             id={"select"}
-            register={register("select")}
+            register={register("course_module")}
         >
             <option value="">Escolha um Módulo</option>
             <option value="Primeiro módulo (Introdução ao Frontend)">Primeiro módulo (Introdução ao Frontend)</option>
@@ -101,9 +109,12 @@ export const FormRegister = () => {
             <option value="Terceiro módulo (Introdução ao Backend)">Terceiro módulo (Introdução ao Backend)</option>
             <option value="Quarto módulo (Backend Avançado)">Quarto módulo (Backend Avançado)</option>
         </InputBox> 
-        {errors.select && <span>{errors.select.message}</span>} 
+       {errors.course_module && <span>{errors.course_module.message}</span>} 
 
-        <StyledButton type="submit" color="primary" buttonType="big">Entrar</StyledButton>
+        <StyledButton type={"submit"} color="primary" buttonType="big" disabled={loading} >
+            {loading ? "Carregando..." : "Cadastrar"}
+        </StyledButton>
+        
     </StyledForm>
   )
 }

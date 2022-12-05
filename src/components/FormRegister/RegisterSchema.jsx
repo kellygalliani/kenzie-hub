@@ -18,5 +18,5 @@ export const RegisterSchema = yup.object().shape({
         .oneOf([yup.ref("password"), null], "As senhas devem ser iguais"),
     bio: yup.string().required("Campo obrigatório"),
     contact: yup.string().required("Campo obrigatório"),
-    course_module: yup.string().required("Selecione um módulo"),
+    course_module: yup.string().required("Selecione um módulo"), 
 })

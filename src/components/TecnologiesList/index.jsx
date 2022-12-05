@@ -5,10 +5,7 @@ import { TecnologiesCard } from './TecnologiesCard'
 export const TecnologiesList = (userLogged) => {
   return (
     <StyledUl>
-        {userLogged.techs.map((tech)=>{
-            <TecnologiesCard tech={tech}/>
-        })}
-        
+      <TecnologiesCard />
     </StyledUl>
   )
 }
