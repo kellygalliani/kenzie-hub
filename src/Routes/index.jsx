@@ -12,7 +12,6 @@ export const RoutesMain = ({userLogin, userLogged, userLogout}) => {
       <Route path="dashboard" element={ <ProtectedRoutes userLogged={userLogged} />}>
         <Route  index  element={ <Dashboard userLogin={userLogin} userLogged={userLogged} userLogout={userLogout} /> } />
       </Route> 
-      
     </Routes>
   )
 }

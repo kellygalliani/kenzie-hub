@@ -17,10 +17,7 @@ export const FormRegister = () => {
        mode: "onChange",
        resolver: yupResolver(RegisterSchema) 
     }  )
-   /*  const submit = (formData) => {
-        /* apiRegister(formData)  
-        
-    } */
+ 
     
    const apiRegister = async (formData) =>{
     const data = {
