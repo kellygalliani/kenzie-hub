@@ -25,4 +25,8 @@ export const StyledForm = styled.form`
         font-size: 12px;
         color: #A63D57;
     }
+    .link{
+        text-decoration: none;
+        color: var(--Grey-0);
+    }
     ` 

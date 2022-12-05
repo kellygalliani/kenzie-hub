@@ -44,7 +44,7 @@ export const FormLogin = ({userLogin}) => {
           {loading ? "Carregando..." : "Entrar"}
         </StyledButton>
         <p /* color="Grey-1" type="HeadlineBold"  */>Ainda não possui uma conta?</p>  
-        <StyledButton color="greyBig" buttonType="big"><Link to="/register">Cadastre-se</Link></StyledButton>
+        <StyledButton color="greyBig" buttonType="big"><Link to="/register" className='link'>Cadastre-se</Link></StyledButton>
         
     </StyledForm>
   )

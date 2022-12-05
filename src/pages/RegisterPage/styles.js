@@ -26,10 +26,13 @@ export const StyledRegisterPage = styled.main`
         background: var(--Grey-3);
         border-radius: 4px;
         padding: 10px 16.2426px;
-        color: var(--Grey-0);
         font-weight: 600;
         font-size: 12px;
         
+    }
+    .link{
+        text-decoration: none;
+        color: var(--Grey-0);
     }
     @media (max-width: 411px) {
         div{

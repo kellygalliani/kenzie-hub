@@ -28,7 +28,6 @@ export const FormRegister = () => {
         contact: formData.contact,
         course_module: formData.course_module,
     }
-    console.log(data)
         try {
             setLoading(true)
             const response = await  api.post("/users", data)
