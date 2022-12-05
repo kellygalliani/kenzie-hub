@@ -5,13 +5,14 @@ import { FormRegister } from '../../components/FormRegister'
 import { Link } from 'react-router-dom'
 
 export const RegisterPage = () => {
+
   return (
     <StyledRegisterPage>
         <div>
           <img src={Logo} alt="logoKenzieHub"/>
           <button type='button'><Link to="/" className="link">Voltar</Link></button> {/* mudar para navigation */}
         </div>
-        <FormRegister/>
+        <FormRegister/>  
     </StyledRegisterPage>
   )
 }

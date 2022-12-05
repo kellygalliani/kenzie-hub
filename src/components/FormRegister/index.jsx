@@ -1,4 +1,3 @@
-
 import React from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
@@ -9,6 +8,8 @@ import { InputBox } from '../Form/Input'
 import { StyledButton } from '../styles/buttons'
 import { RegisterSchema } from './RegisterSchema'
 import { StyledForm } from './styles'
+import { toast, ToastContainer } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 export const FormRegister = () => {
     const [loading, setLoading] = useState(false)
@@ -31,9 +32,34 @@ export const FormRegister = () => {
         try {
             setLoading(true)
             const response = await  api.post("/users", data)
-            navigate("/")
-            console.log(response)
+            /* toast.success("Cadastro efetuado com sucesso"); */
+            toast.success('Cadastro efetuado com sucesso', {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
+
+            setTimeout(()=>{
+                navigate("/")
+            }, 3000)
+            
         } catch (error) {
+         
+            toast.error("Algo deu errado!", {
+                position: "top-right",
+                autoClose: 5000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "dark",
+                });
             console.log(error)
         } finally{
             setLoading(false)
@@ -41,6 +67,7 @@ export const FormRegister = () => {
     }  
     
   return (
+    <>
     <StyledForm onSubmit={handleSubmit(apiRegister)} >
         <h2>Crie sua conta</h2>
         <p>Rápido e grátis, vamos nessa!</p>
@@ -111,6 +138,9 @@ export const FormRegister = () => {
             {loading ? "Carregando..." : "Cadastrar"}
         </StyledButton>
         
+        
     </StyledForm>
+    <ToastContainer />
+    </>
   )
 }
