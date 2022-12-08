@@ -54,6 +54,33 @@ export const StyledDashboard = styled.div`
         align-items: center;
         
     }
+    .section_2 > div > svg{
+        color: var(--Grey-0);
+        height: 30px;
+        width: 30px;
+        background-color: var(--Grey-3);
+        border-radius: 4px;
+        cursor: pointer;
+    }
+    & .modal{
+        position: absolute;
+        top: 40px;
+        left: 40px;
+        right: 40px;
+        bottom: 40px;
+        background-color: papayawhip;
+        width: 90%;
+        max-width: 360px;
+    } 
+    & .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: rebeccapurple;
+    }
+    
 
     
 `

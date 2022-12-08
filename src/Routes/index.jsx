@@ -4,13 +4,13 @@ import { Dashboard } from '../pages/Dashboard';
 import { LoginPage } from '../pages/LoginPage';
 import { RegisterPage } from '../pages/RegisterPage';
 
-export const RoutesMain = ({userLogin, userLogged, userLogout}) => {
+export const RoutesMain = () => {
   return (
     <Routes>
-      <Route  path="/" element={ <LoginPage userLogin={userLogin} />  } />
+      <Route  path="/" element={ <LoginPage />  } />
       <Route  path="register" element={ <RegisterPage /> } />
-      <Route path="dashboard" element={ <ProtectedRoutes userLogged={userLogged} />}>
-        <Route  index  element={ <Dashboard userLogin={userLogin} userLogged={userLogged} userLogout={userLogout} /> } />
+      <Route path="/dashboard" element={ <ProtectedRoutes />}>
+        <Route  index  element={ <Dashboard /> } />
       </Route> 
     </Routes>
   )

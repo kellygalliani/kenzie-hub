@@ -32,7 +32,7 @@ export const FormRegister = () => {
         try {
             setLoading(true)
             const response = await  api.post("/users", data)
-            /* toast.success("Cadastro efetuado com sucesso"); */
+
             toast.success('Cadastro efetuado com sucesso', {
                 position: "top-right",
                 autoClose: 2000,

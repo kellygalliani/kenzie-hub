@@ -6,8 +6,11 @@ import { InputBox } from '../Form/Input'
 import { StyledButton } from '../styles/buttons'
 import { StyledForm } from './style'
 import { loginSchema } from './loginSchema'
+import { useContext } from 'react'
+import { AuthContext } from '../../contexts/AuthContext'
 
-export const FormLogin = ({userLogin}) => {
+export const FormLogin = () => {
+  const { userLogin } = useContext(AuthContext)
   const [loading, setLoading] = useState(false)
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(loginSchema),

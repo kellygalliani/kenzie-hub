@@ -39,5 +39,4 @@ export const StyledInputBox = styled.fieldset`
         border: 0.9772px solid #F8F9FA;
     }
 
-
 ` 
