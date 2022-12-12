@@ -84,6 +84,14 @@ export const StyledButton = styled.button `
                     font-weight: 600;
                     font-size: 12px;
                 `
+            case "modal":
+                return css` 
+                    width: 100%;
+                    height: 38px;
+                    border-radius: 4px;
+                    font-weight: 600;
+                    font-size: 12px;
+                `
         }
     }}
 `

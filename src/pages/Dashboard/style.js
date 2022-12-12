@@ -35,6 +35,14 @@ export const StyledDashboard = styled.div`
         justify-content: space-between;
         align-items: center;
     }
+    @media (max-width: 450px) {
+        .section_1{
+            flex-direction: column;
+            justify-content: center;
+            align-items: flex-start;
+            gap: 20px;
+        }
+    }
     .section_2{
         width: 100%;
         padding: 11px 0;

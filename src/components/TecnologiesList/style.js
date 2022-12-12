@@ -6,5 +6,8 @@ export const StyledUl = styled.ul`
     width: 100%;
     background: var(--Grey-3);
     border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     
 `

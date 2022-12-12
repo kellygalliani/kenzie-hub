@@ -1,70 +1,23 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
-import { useNavigate } from 'react-router-dom'
-import { api } from '../../services/api'
 import { InputBox } from '../Form/Input'
 import { StyledButton } from '../styles/buttons'
 import { RegisterSchema } from './RegisterSchema'
 import { StyledForm } from './styles'
 import { toast, ToastContainer } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
+import { AuthContext } from '../../contexts/AuthContext'
 
 export const FormRegister = () => {
+    const { apiRegister } = useContext(AuthContext)
     const [loading, setLoading] = useState(false)
-    const navigate = useNavigate();
     const { register, handleSubmit ,  formState: { errors }/*, reset */ } = useForm({
        mode: "onChange",
        resolver: yupResolver(RegisterSchema) 
     }  )
- 
-    
-   const apiRegister = async (formData) =>{
-    const data = {
-        email: formData.email,
-        password: formData.password,
-        name: formData.name,
-        bio: formData.bio,
-        contact: formData.contact,
-        course_module: formData.course_module,
-    }
-        try {
-            setLoading(true)
-            const response = await  api.post("/users", data)
-
-            toast.success('Cadastro efetuado com sucesso', {
-                position: "top-right",
-                autoClose: 2000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-
-            setTimeout(()=>{
-                navigate("/")
-            }, 3000)
-            
-        } catch (error) {
-         
-            toast.error("Algo deu errado!", {
-                position: "top-right",
-                autoClose: 5000,
-                hideProgressBar: false,
-                closeOnClick: true,
-                pauseOnHover: true,
-                draggable: true,
-                progress: undefined,
-                theme: "dark",
-                });
-            console.log(error)
-        } finally{
-            setLoading(false)
-        } 
-    }  
+  
     
   return (
     <>

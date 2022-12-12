@@ -24,6 +24,7 @@ export const GlobalStyle = createGlobalStyle`
         --Grey-2: #343B41;
         --Grey-1: #868E96;
         --Grey-0: #FFFFFF;
+        --BackgroundModal: rgba(18, 18, 20, 0.5);
     }
    
 
