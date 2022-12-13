@@ -13,6 +13,28 @@ export const AuthProvider = ({children}) =>{
   const [loadingForApi, setloadingForApi] = useState(true)
   const navigate = useNavigate()
 
+  const loadUser = async () =>{ 
+    const token =  localStorage.getItem("@TOKEN")
+  
+    if(!token){
+      setloadingForApi(false)
+    return 
+    }
+    try {
+      const { data } = await api.get("/profile",{ 
+        headers: {
+          authorization: `Bearer ${token}`
+        }
+      })
+      setUserLogged(data) 
+    }
+    catch (error) {
+        console.error(error)
+    } finally{
+        setloadingForApi(false)
+    }
+  }
+
   const apiRegister = async (formData) =>{
     const data = {
         email: formData.email,
@@ -105,27 +127,6 @@ export const AuthProvider = ({children}) =>{
 
   /* FUNÇÃO PARA VER SE O USUÁRIO ESTÁ REALMENTE AUTENTICADO E PARA CONTINUAR AUTENTICADO COMO DER UM REFRESH NA PÀGINA */
   useEffect(()=>{
-    const loadUser = async () =>{ 
-      const token =  localStorage.getItem("@TOKEN")
-    
-      if(!token){
-        setloadingForApi(false)
-      return 
-      }
-      try {
-        const { data } = await api.get("/profile",{ 
-          headers: {
-            authorization: `Bearer ${token}`
-          }
-        })
-        setUserLogged(data) 
-      }
-      catch (error) {
-          console.error(error)
-      } finally{
-          setloadingForApi(false)
-      }
-    }
     loadUser()
   }, [])  
     
@@ -146,6 +147,7 @@ export const AuthProvider = ({children}) =>{
             userLogged,
             loadingForApi,
             apiRegister,
+            loadUser
         }
     }>
         {children}

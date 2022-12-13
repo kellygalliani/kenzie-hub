@@ -14,6 +14,18 @@ export const StyledLi = styled.li`
 
     :hover {
         background: var(--Grey-2);
+        cursor: pointer;
+    }
+    svg{
+        color: var(--Grey-1);
+        width: 15px;
+        height: 15px;
+    }
+    div{
+        display: flex;
+        align-items: center;
+        gap: 35px;
+        border-bottom: none !important;
     }
 
 `

@@ -88,7 +88,10 @@ export const StyledDashboard = styled.div`
         bottom: 0;
         background-color: rebeccapurple;
     }
-    
-
+    span{
+        font-weight: 600;
+        font-size: 12px;
+        color: #A63D57;
+    }
     
 `

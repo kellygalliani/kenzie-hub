@@ -10,21 +10,30 @@ import { AuthContext } from './AuthContext'
 export const TechsContext = createContext({})
 
 export const TechsProvider = ({children}) => {
-  const {userLogin, userLogged, userLogout, loadUser} = useContext(AuthContext)
+  const {userLogged, loadUser} = useContext(AuthContext)
   const [technologies, setTechnologies] = useState([])
   const [modalIsOpen, setModaIsOpen] = useState(false)
   const [selectedTechnology, setSelectedTechnology] = useState([])
 
-   useEffect(()=>{
+  useEffect(()=>{
     ( async ()=>{
+      console.log("modal fechou")
       try {
         const response = await api.get(`/users/${userLogged.id}`)
         setTechnologies(response.data.techs)
+        console.log(response.data.techs)
       } catch (error) {
         console.error(error)
       }
     })()
-  }, [setTechnologies])
+  }, [selectedTechnology, modalIsOpen]) 
+
+ /*  useEffect(()=>{
+    
+    if(userLogged){
+      setTechnologies(userLogged.techs)
+    }
+  }, [userLogged]) */
 
   const createTechnologies = async (data) =>{
     const token =  localStorage.getItem("@TOKEN")
@@ -32,9 +41,8 @@ export const TechsProvider = ({children}) => {
       api.defaults.headers.common['Authorization'] = 'Bearer ' + token
       const response = await api.post("/users/techs", data)
 
-      setTechnologies(...data)
       setModaIsOpen(false)
-      toast.success("Tenologia criada com sucesso", {
+      toast.success("Tecnologia criada com sucesso", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
@@ -44,21 +52,43 @@ export const TechsProvider = ({children}) => {
         progress: undefined,
         theme: "dark",
       });
-      console.log(response)
     } catch (error) {
       console.error(error)
     }
   }
 
-  const editTecnologies = async (data) =>{
+  const editTechnologies = async (data, id) =>{
+    console.log(data)
     const token =  localStorage.getItem("@TOKEN")
     try {
       api.defaults.headers.common['Authorization'] = 'Bearer ' + token
-      const response = await api.post("/users/techs", data)
-
-      setTechnologies(...data)
+      const response = await api.put(`/users/techs/${id}`, data)
+      
+      loadUser()
       setModaIsOpen(false)
-      toast.success("Tenologia criada com sucesso", {
+      toast.success("Tecnologia alterada com sucesso", {
+          position: "top-right",
+          autoClose: 1000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "dark",
+      } )
+    } catch (error) {
+      console.error(error)
+    }
+  }
+
+  const deleteTechnologies = async (id) =>{
+    const token =  localStorage.getItem("@TOKEN")
+    try {
+      api.defaults.headers.common['Authorization'] = 'Bearer ' + token
+      const response = await api.delete(`/users/techs/${id}`)
+      
+      setModaIsOpen(false)
+      toast.success("Tecnologia deletada com sucesso", {
         position: "top-right",
         autoClose: 1000,
         hideProgressBar: false,
@@ -68,7 +98,6 @@ export const TechsProvider = ({children}) => {
         progress: undefined,
         theme: "dark",
       });
-      console.log(response)
     } catch (error) {
       console.error(error)
     }
@@ -83,7 +112,9 @@ export const TechsProvider = ({children}) => {
           technologies, 
           setTechnologies,
           selectedTechnology,
-          setSelectedTechnology,          
+          setSelectedTechnology,
+          editTechnologies, 
+          deleteTechnologies          
         }}
     >
         {children}

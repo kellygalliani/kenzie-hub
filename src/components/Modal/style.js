@@ -58,8 +58,11 @@ export const ContentModalStyled = styled.div`
             display: flex;
             gap: 22px;
         }
+        div:nth-child(1){
+            width: 70%;
+        }
+        div:nth-child(2){
+            width: 30%;
+        }
     }
-    
-
-
 `

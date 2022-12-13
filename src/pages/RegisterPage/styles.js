@@ -22,17 +22,19 @@ export const StyledRegisterPage = styled.main`
         width: 122.06px;
         height: 21.21px;
     }
-    div > button{
+    .link{
+        text-decoration: none;
         background: var(--Grey-3);
         border-radius: 4px;
         padding: 10px 16.2426px;
+        
+        
+        button{
+        color: var(--Grey-0);
+        background: none;
         font-weight: 600;
         font-size: 12px;
-        
-    }
-    .link{
-        text-decoration: none;
-        color: var(--Grey-0);
+        }
     }
     @media (max-width: 411px) {
         div{

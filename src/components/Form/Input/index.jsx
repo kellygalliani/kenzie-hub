@@ -1,9 +1,8 @@
-import React, { Children, useContext } from 'react'
-import { TechsContext } from '../../../contexts/TechsContext'
+import React, { Children } from 'react'
 import { StyledInputBox } from './style'
 
-export const InputBox = ({ label, type, id, placeholder, register, disabled, value, children}) => {
-  const { selectedTechnology, setSelectedTechnology} = useContext(TechsContext)
+export const InputBox = ({ label, type, id, placeholder, register, disabled, children}) => {
+  
 
   if(type === "select"){
     return (
