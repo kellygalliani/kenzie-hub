@@ -44,7 +44,7 @@ export const AuthProvider = ({children}) =>{
         contact: formData.contact,
         course_module: formData.course_module,
     }
-    console.log(data)
+   
         try {
           setloadingForApi(true)
             const response = await  api.post("/users", data)
@@ -93,7 +93,7 @@ export const AuthProvider = ({children}) =>{
         setUserLogged(user)
         toast.success("Login efetuado com sucesso", {
           position: "top-right",
-          autoClose: 2000,
+          autoClose: 300,
           hideProgressBar: false,
           closeOnClick: true,
           pauseOnHover: true,
@@ -103,7 +103,7 @@ export const AuthProvider = ({children}) =>{
           });
         setTimeout(()=>{
           navigate("/dashboard")
-        }, 3000)
+        }, 1000)
         
         
       } catch (error) {
@@ -125,12 +125,9 @@ export const AuthProvider = ({children}) =>{
       }
   }
 
-  /* FUNÇÃO PARA VER SE O USUÁRIO ESTÁ REALMENTE AUTENTICADO E PARA CONTINUAR AUTENTICADO COMO DER UM REFRESH NA PÀGINA */
   useEffect(()=>{
     loadUser()
   }, [])  
-    
-
     
   const userLogout = () => {
     localStorage.removeItem("@TOKEN")

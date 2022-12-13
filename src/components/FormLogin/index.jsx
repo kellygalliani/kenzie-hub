@@ -21,7 +21,6 @@ export const FormLogin = () => {
     userLogin(data, setLoading)
   }
 
-
   return (
     <StyledForm onSubmit={handleSubmit(submit)}>
         <h2>Login</h2>
@@ -46,7 +45,7 @@ export const FormLogin = () => {
         <StyledButton color="primary" buttonType="big" disabled={loading}>
           {loading ? "Carregando..." : "Entrar"}
         </StyledButton>
-        <p /* color="Grey-1" type="HeadlineBold"  */>Ainda não possui uma conta?</p>  
+        <p>Ainda não possui uma conta?</p>  
         <StyledButton color="greyBig" buttonType="big"><Link to="/register" className='link'>Cadastre-se</Link></StyledButton>
         
     </StyledForm>

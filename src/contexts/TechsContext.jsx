@@ -21,19 +21,12 @@ export const TechsProvider = ({children}) => {
       try {
         const response = await api.get(`/users/${userLogged.id}`)
         setTechnologies(response.data.techs)
-        console.log(response.data.techs)
+      
       } catch (error) {
         console.error(error)
       }
     })()
   }, [selectedTechnology, modalIsOpen]) 
-
- /*  useEffect(()=>{
-    
-    if(userLogged){
-      setTechnologies(userLogged.techs)
-    }
-  }, [userLogged]) */
 
   const createTechnologies = async (data) =>{
     const token =  localStorage.getItem("@TOKEN")
@@ -58,7 +51,7 @@ export const TechsProvider = ({children}) => {
   }
 
   const editTechnologies = async (data, id) =>{
-    console.log(data)
+    
     const token =  localStorage.getItem("@TOKEN")
     try {
       api.defaults.headers.common['Authorization'] = 'Bearer ' + token

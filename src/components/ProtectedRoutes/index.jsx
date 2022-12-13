@@ -7,8 +7,8 @@ export const ProtectedRoutes = () => {
     const navigate = useNavigate()
     const {userLogged, loadingForApi} = useContext(AuthContext)
     
-    if(loadingForApi){ /* (esse if serve para ver se ainda está logando) */
-      return null /* (aqui poderia retornar um componente carregando) */
+    if(loadingForApi){ 
+      return null 
     }
     
   return (

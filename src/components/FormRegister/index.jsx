@@ -17,7 +17,6 @@ export const FormRegister = () => {
        mode: "onChange",
        resolver: yupResolver(RegisterSchema) 
     }  )
-  
     
   return (
     <>
@@ -90,8 +89,7 @@ export const FormRegister = () => {
         <StyledButton type={"submit"} color="primary" buttonType="big" disabled={loading} >
             {loading ? "Carregando..." : "Cadastrar"}
         </StyledButton>
-        
-        
+
     </StyledForm>
     <ToastContainer />
     </>

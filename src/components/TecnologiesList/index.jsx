@@ -20,16 +20,5 @@ export const TecnologiesList = ({userLogged, showModal}) => {
       <EmptyList showModal={showModal}/>
     )
   } 
-
-  /* return (
-    <StyledUl>
-      {technologies.length > 0 ?
-        technologies.map((technology) => {
-          return <TecnologiesCard  technology={technology} showModal={showModal} />
-        } ) :
-        <h1>Sem tech</h1>
-      }
-    </StyledUl>
-  ) */
   
 }
