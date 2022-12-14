@@ -59,10 +59,7 @@ export const AuthProvider = ({children}) =>{
                 progress: undefined,
                 theme: "dark",
                 });
-
-            setTimeout(()=>{
-                navigate("/")
-            }, 3000)
+            navigate("/")
             
         } catch (error) {
          

@@ -16,16 +16,16 @@ export const TechsProvider = ({children}) => {
   const [selectedTechnology, setSelectedTechnology] = useState([])
 
   useEffect(()=>{
-    ( async ()=>{
-      console.log("modal fechou")
+    (async ()=>{
       try {
         const response = await api.get(`/users/${userLogged.id}`)
         setTechnologies(response.data.techs)
       
-      } catch (error) {
+      } catch (error){
         console.error(error)
       }
     })()
+
   }, [selectedTechnology, modalIsOpen]) 
 
   const createTechnologies = async (data) =>{
