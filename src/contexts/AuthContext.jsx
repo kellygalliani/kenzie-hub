@@ -11,6 +11,7 @@ export const AuthContext = createContext({})
 export const AuthProvider = ({children}) =>{
   const [userLogged, setUserLogged] = useState(null)
   const [loadingForApi, setloadingForApi] = useState(true)
+  
   const navigate = useNavigate()
 
   const loadUser = async () =>{ 
