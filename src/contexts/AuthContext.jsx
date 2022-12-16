@@ -99,11 +99,8 @@ export const AuthProvider = ({children}) =>{
           progress: undefined,
           theme: "dark",
           });
-        setTimeout(()=>{
-          navigate("/dashboard")
-        }, 1000)
         
-        
+        navigate("/dashboard")
       } catch (error) {
   
         toast.error("Algo deu errado!", {
