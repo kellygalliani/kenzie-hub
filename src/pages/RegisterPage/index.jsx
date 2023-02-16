@@ -10,7 +10,7 @@ export const RegisterPage = () => {
     <StyledRegisterPage>
         <div>
           <img src={Logo} alt="logoKenzieHub"/>
-          <Link to="/" className="link"><button type='button'>Voltar</button></Link> {/* mudar para navigation */}
+          <Link to="/" className="link"><button type='button'>Voltar</button></Link> 
         </div>
         <FormRegister/>  
     </StyledRegisterPage>
